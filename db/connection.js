@@ -13,5 +13,9 @@ db
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+  
 
-module.exports = db
+module.exports = {
+  db,
+  Sequelize
+}

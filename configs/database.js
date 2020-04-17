@@ -1,8 +1,10 @@
 module.exports = {
+
     host:'localhost',
     port:'3306',
     dialect:'mysql',
     database:'fake-instagram',
     username:'root',
-    password:'#1246'
+    password:'#1246',
+    
 }

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const registerController = require('../controllers/registerController')
+const loginController = require('../controllers/loginController')
 
 /* GET home page. */
 
@@ -11,7 +12,6 @@ router.get('/home', function(req, res, next) {
 });
 
 // Registro
-
 router.get('/registro', function(req, res, next) {
   res.render('auth/register');
 });
@@ -22,6 +22,8 @@ router.post('/registro',registerController.store);
 router.get('/', function(req, res, next) {
   res.render('auth/login');
 });
+
+router.post('/',loginController.verify)
 
 
 

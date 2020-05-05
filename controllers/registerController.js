@@ -5,23 +5,22 @@ const bcrypt = require('bcrypt')
 module.exports = {
     async store(req,res){
 
-        console.log(req)
+        let {email , name  ,username , password} = req.body
 
-        let {email,name,username,password} = req.body
-
-        let replacements = {name,email,username,password:bcrypt.hashSync(password,10)}
+        let replacements = {name,email , username , password:bcrypt.hashSync(password, 10)}
 
         await db.query(
         `INSERT INTO users (name,email,username,password) 
          VALUES (:name,:email, :username, :password);`,
         {
             replacements,
-            
+
             type:Sequelize.QueryTypes.INSERT,
+
         }
     )
 
-        res.redirect('/home')
+        res.redirect('/')
 
     }
 }

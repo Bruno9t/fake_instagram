@@ -17,5 +17,5 @@ db
 
 module.exports = {
   db,
-  Sequelize
+  Sequelize,
 }

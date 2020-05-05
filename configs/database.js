@@ -5,6 +5,6 @@ module.exports = {
     dialect:'mysql',
     database:'fake-instagram',
     username:'root',
-    password:'#1246',
+    password:'#@6780lM',
     
 }

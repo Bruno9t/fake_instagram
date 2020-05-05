@@ -23,75 +23,51 @@
           <a href="">
             <div class="avatar-content">
               <img class="avatar" src="/img/avatar-example.png">
-              <b>nati.carolira</b>
+              <b><%= locals.user.name %></b>
             </div>
           </a>
         </nav>
       </div>
     </header>
     <main class="container content">
+
+      <% for(let i=0;i<publications.length ; i++ ) { %>
+
       <div class="card">
         <div class="card-header">
           <div>
             <img class="avatar" src="/img/avatar-example.png">
-            <b>nati.carolira</b>
+            <b><%= publications[i].user.name %></b>
           </div>
-            <img src="/img/icons/more-vertical.svg">
+            <img src="">
         </div>
         <div class="card-img">
-          <img src="/img/publication_example.jpg">
+          <img src="<%= publications[i].image %>">
         </div>
         <div class="card-body">
           <div class="card-itens">
             <div class="likes">
               <img src="/img/icons/heart.svg">
-              <b>35 likes</b>
+              <b><%= publications[i].like %> likes</b>
             </div>
-            <b>Postado no dia: 16/04/2020</b>
+            <b>Postado no dia: <%= moment(publications[i].create_at).format('DD/MM/YYYY') %> </b>
           </div>
           <div class="card-comments">
-            <p><b>ovinnyoliveira</b> Mano que incrivel</p>
-            <p><b>front.hendy</b> <3 </p>
-            <p><b>verofefo</b> aff.. </p>
+            <%for(let j = 0;j<publications[i].comments.length; j++) { %>
+
+            <p><b>user_undefined</b> <%= publications[i].comments[j].description %></p>
+
+            <%}%>
           </div>
          
         </div>
-        <form class="form-comments" action="">
-          <input type="text" placeholder="Adicione um comentário...">
+        <form class="form-comments" action="/comment/<%= publications[i].id %>/create" method="POST">
+          <input type="text" name='message' placeholder="Adicione um comentário...">
           <button>Publicar</button>
         </form>
       </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <img class="avatar" src="/img/avatar-example.png">
-            <b>nati.carolira</b>
-          </div>
-            <img src="/img/icons/more-vertical.svg">
-        </div>
-        <div class="card-img">
-          <img src="/img/publication_example.jpg">
-        </div>
-        <div class="card-body">
-          <div class="card-itens">
-            <div class="likes">
-              <img src="/img/icons/heart.svg">
-              <b>35 likes</b>
-            </div>
-            <b>Postado no dia: 16/04/2020</b>
-          </div>
-          <div class="card-comments">
-            <p><b>ovinnyoliveira</b> Mano que incrivel</p>
-            <p><b>front.hendy</b> <3 </p>
-            <p><b>verofefo</b> aff.. </p>
-          </div>
-         
-        </div>
-        <form class="form-comments" action="">
-          <input type="text" placeholder="Adicione um comentário...">
-          <button>Publicar</button>
-        </form>
+
+      <% } %>
       </div>
     </main>
   </body>
